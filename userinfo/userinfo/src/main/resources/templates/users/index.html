@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<title>Insert title here</title>
+</head>
+<body>
+	<div class="container">
+	<h1 class="text-center my-4">Users Information</h1>
+	<p><a href="/create">Add a new user</a></p>
+	
+	      <table class="table">
+
+                <thead>
+                    <tr>
+                    	<th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                
+                <tbody>
+                <tr th:each="user : ${users}"> 
+                		<td th:text="${user.id}"></td>
+                        <td th:text="${user.name}"></td>
+                        <td th:text="${user.email}"></td>                        
+                        <td style="white-space:nowrap"><a class="btn btn-primary btn-sm" 
+                        th:href="@{/edit/{id}(id=${user.id})}">Edit</a></td>
+                        <td style="white-space:nowrap"><a class="btn btn-danger btn-sm" 
+                        th:href="@{/delete/{id}(id=${user.id})}">Delete</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>      
+ 
+</body>
+</html>
